@@ -12,3 +12,4 @@ t/04-unchanged.t
 t/05-self-reference.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
+META.json                                Module JSON meta-data (added by MakeMaker)
