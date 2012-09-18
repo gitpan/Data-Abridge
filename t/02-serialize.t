@@ -55,14 +55,10 @@ for my $o (@objects) {
     my $sup  = qr/foo/;
     bless $sup, 'GoodThing';
     my $abr = abridge_items($sup);
+    my $sup_as_string = "$sup";
 
     is_deeply( $abr,
-            [{GoodThing => {
-                    'Regexp',
-                    $] > 5.013 ? "(?^:foo)"
-                               : "(?-xism:foo)"
-                },
-            }],
+            [{ GoodThing => {'Regexp', $sup_as_string} }],
             'Blessed Regexp references handled'
         );
 }
@@ -70,12 +66,10 @@ for my $o (@objects) {
 {
     my $sup = qr/foo/;
     my $abr = abridge_items($sup);
+    my $sup_as_string = "$sup";
 
     is_deeply( $abr,
-            [{  'Regexp',
-                $] > 5.013 ? "(?^:foo)"
-                           : "(?-xism:foo)"
-            }],
+            [{  'Regexp', $sup_as_string }],
             'Regexp references handled'
         );
 }
